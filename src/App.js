@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './index.css'
 
-function App() {
+const App = () => {
+  // define useState hook
+  const [ dark, setDark ] = useState(false)
+
+  const toggleDark = () => {
+    setDark(!dark)
+  }
+
+  const blockCircle = {
+    background: dark ? 'black':'white',
+    border: '2px solid black',
+    width:'150px',
+    height:'150px',
+    borderRadius: '50%',
+    position:'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'blue',
+    lineHeight: '120px',
+    fontSize: '18px'
+  }
+
+  const blockText = {
+    position: 'absolute',
+    top: '65%',
+    left: '50%',
+    transform: 'translate(-50%, 50%)',
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div style={blockCircle}>
+        <span>Dark mode is {dark ? 'ON' : 'OFF'}</span>
+      </div>
+      <div style={blockText}>
+        <button onClick={toggleDark}>Toggle Dark</button>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
